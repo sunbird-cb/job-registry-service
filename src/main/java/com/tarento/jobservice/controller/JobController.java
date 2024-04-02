@@ -22,6 +22,7 @@ import org.springframework.web.multipart.MultipartFile;
 @RequestMapping("/api/v1/Job")
 @Slf4j
 public class JobController {
+  // Controller
 
   @Autowired
   TargetJobService targetJobService;
