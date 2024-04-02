@@ -1,0 +1,208 @@
+{
+  "sourceSystem": {
+    "type": "keyword"
+  },
+  "id": {
+    "type": "keyword"
+  },
+  "jobTransientId": {
+    "type": "keyword"
+  },
+  "jobTitle": {
+    "type": "keyword"
+  },
+  "jobId": {
+    "type": "keyword"
+  },
+  "sourceId": {
+    "type": "keyword"
+  },
+  "companyId": {
+    "type": "keyword"
+  },
+  "searchTags": {
+    "type": "keyword"
+  },
+  "companyName": {
+    "type": "keyword"
+  },
+  "languageAvailability": {
+    "type": "keyword"
+  },
+  "jobLocations": {
+  "type": "keyword"
+  },
+  "minEduQual": {
+  "type": "keyword"
+  },
+  "employerCategory": {
+    "type": "keyword"
+  },
+  "validUpto": {
+    "type": "date",
+    "format": ["yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", "epoch_millis"]
+  },
+  "postedOn": {
+    "type": "date",
+    "format": ["yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", "epoch_millis"]
+  },
+  "sectorName": {
+    "type": "keyword"
+  },
+  "joiningPriority": {
+    "type": "keyword"
+  },
+  "rolesAndResponsiblty": {
+    "type": "keyword"
+  },
+  "vacancyCount": {
+    "type": "keyword"
+  },
+  "minCtcMonthly": {
+    "type": "long"
+  },
+  "maxCtcMonthly": {
+    "type": "long"
+  },
+  "ctcMonthly": {
+    "type": "text"
+  },
+  "sectorId": {
+    "type": "keyword"
+  },
+  "createDate": {
+    "type": "date",
+    "format": ["yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", "epoch_millis"]
+  },
+  "lastUpdateDate": {
+    "type": "date",
+    "format": ["yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", "epoch_millis"]
+  },
+  "createdBy": {
+    "type": "keyword"
+  },
+  "functionalDetails": {
+    "type": "nested",
+    "properties": {
+      "functionalCode": {
+        "type": "keyword"
+      },
+      "functionalAreaName": {
+        "type": "keyword"
+      }
+    }
+  },
+  "industryName": {
+    "type": "keyword"
+  },
+  "industryCode": {
+    "type": "keyword"
+  },
+  "contactPersonName": {
+    "type": "keyword"
+  },
+  "contactPersonDesignation": {
+    "type": "keyword"
+  },
+  "contactPersonMobile": {
+    "type": "keyword"
+  },
+  "contactPersonEmail": {
+    "type": "keyword"
+  },
+  "isFavourite": {
+    "type": "boolean"
+  },
+  "sidSectorId": {
+    "type": "keyword"
+  },
+  "sidSectorName": {
+    "type": "keyword"
+  },
+  "jobLocationType": {
+    "type": "keyword"
+  },
+  "jobLocationState": {
+    "type": "keyword"
+  },
+  "jobLocationCountry": {
+    "type": "keyword"
+  },
+  "jobLocationDistrict": {
+    "type": "keyword"
+  },
+  "jobStatus": {
+    "type": "keyword"
+  },
+  "minExperience": {
+    "type": "integer"
+  },
+  "maxExperience": {
+    "type": "integer"
+  },
+  "jobLocation": {
+    "type": "nested",
+    "properties": {
+      "addressLine1": {
+        "type": "keyword"
+      },
+      "addressLine2": {
+        "type": "keyword"
+      },
+      "countryCode": {
+        "type": "keyword"
+      },
+      "country": {
+        "type": "keyword"
+      },
+      "stateCode": {
+        "type": "keyword"
+      },
+      "state": {
+        "type": "keyword"
+      },
+      "districtCode": {
+        "type": "keyword"
+      },
+      "district": {
+        "type": "keyword"
+      },
+      "blockCode": {
+        "type": "keyword"
+      },
+      "block": {
+        "type": "keyword"
+      },
+      "panchayatCode": {
+        "type": "keyword"
+      },
+      "panchayat": {
+        "type": "keyword"
+      },
+      "villageCode": {
+        "type": "keyword"
+      },
+      "village": {
+        "type": "keyword"
+      },
+      "pin": {
+        "type": "keyword"
+      },
+      "landmark": {
+        "type": "keyword"
+      },
+      "zoneId": {
+        "type": "keyword"
+      },
+      "latitude": {
+        "type": "double"
+      },
+      "longitude": {
+        "type": "double"
+      }
+    }
+  }
+}
+
+
+

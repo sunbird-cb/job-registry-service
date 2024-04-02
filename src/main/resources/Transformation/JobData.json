@@ -1,0 +1,106 @@
+[
+  {
+    "operation": "shift",
+    "spec": {
+      "job_title": "jobTitle",
+      "JobId": "jobId",
+      "job_description": "jobDescription",
+      "source_id": "sourceId",
+      "source_system": "sourceSystem",
+      "language_availability": "languageAvailability",
+      "valid_upto": "validUpto",
+      "posted_on": "postedOn",
+      "joining_priority": "joiningPriority",
+      "roles_and_responsiblty": "rolesAndResponsibility",
+      "vacancy_count": "vacancyCount",
+      "min_ctc_monthly": ["minCTC", "minCtcMonthly"],
+      "max_ctc_monthly": ["maxCtcMonthly", "maxCTC"],
+      "sector_id": "sectorId",
+      "sector_name": "sectorName",
+      "functional_code": "functionalCode",
+      "functional_area_name": "functionalAreaName",
+      "scheme_name": "schemeName",
+      "industry_name": "industryName",
+      "industry_code": "industryCode",
+      "contact_person_name": "contactPersonName",
+      "contact_person_designation": "contactPersonDesignation",
+      "contact_person_mobile": "contactPersonMobile",
+      "contact_person_email": "contactPersonEmail",
+      "employer_category": "employerCategory",
+      "company_name": "companyName",
+      "min_edu_qual": "minEduQual",
+      "address_line1": "jobLocation.addressLine1",
+      "address_line2": "jobLocation.addressLine2",
+      "country_code": "jobLocation.countryCode",
+      "country": ["jobLocationCountry","jobLocation.country"],
+      "state_code": "jobLocation.stateCode",
+      "State": ["jobLocationState","jobLocation.state"],
+      "district_code": "jobLocation.districtCode",
+      "District": ["jobLocation.district", "jobLocationDistrict"],
+      "block_code": "jobLocation.blockCode",
+      "block": "jobLocation.block",
+      "panchayat": "jobLocation.panchayat",
+      "village": "jobLocation.village",
+      "pin": "jobLocation.pin",
+      "landmark": "jobLocation.landmark",
+      "latitude": "jobLocation.latitude",
+      "longitude": "jobLocation.longitude",
+      "address_type": "jobLocation.addressType",
+      "company_id": "companyId",
+      "Apply_link": "applyURL",
+      "Job_location": "jobLocations",
+      "eligibility_criteria": "eligibilityCriteria",
+      "inhand_monthly": "inhandMonthly",
+      "stipened_start": "stipenedStart",
+      "stipened_end": "stipenedEnd",
+      "tags": "tags",
+      "benefits": "benefits",
+      "job_location_type": "jobLocationType",
+      "job_status": "jobStatus",
+      "experience_from" : "minExperience",
+      "experience_to": "maxExperience"
+    }
+  },
+  {
+    "operation": "default",
+    "spec": {
+      "inhandMonthly": 0,
+      "stipenedStart": 0,
+      "stipenedEnd": 0,
+      "benefits": "",
+      "tags": "",
+      "eligibilityCriteria": {
+        "specialization": "",
+        "experienceLevel": "",
+        "height": "",
+        "weight": "",
+        "age": "",
+        "gender": ""
+      },
+      "jobLocation": {
+        "villageCode": "",
+        "panchayatCode": ""
+      },
+      "isFavourite": false,
+      "isApplied": false,
+      "searchTags": [],
+      "jobStatus": "Active",
+      "minExperience":0,
+      "maxExperience":0
+    }
+  },
+  {
+    "operation": "modify-overwrite-beta",
+    "spec": {
+      "minCtcMonthly": "=divide(@(1,minCtcMonthly), 0.00012)",
+      "maxCtcMonthly": "=divide(@(1,maxCtcMonthly), 0.00012)"
+    }
+  },
+  {
+    "operation": "modify-overwrite-beta",
+    "spec": {
+      "minCtcMonthly": "=toLong",
+      "maxCtcMonthly": "=toLong"
+    }
+  }
+]
