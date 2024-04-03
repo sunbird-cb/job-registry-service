@@ -5,30 +5,21 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.node.JsonNodeFactory;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import com.tarento.jobservice.constant.Constants;
-import com.tarento.jobservice.dto.JWTDetailsDTO;
-import com.tarento.jobservice.dto.JobFavDto;
-import com.tarento.jobservice.dto.JobFavResponseDTO;
 import com.tarento.jobservice.elasticsearch.dto.SearchCriteria;
 import com.tarento.jobservice.elasticsearch.dto.SearchResult;
 import com.tarento.jobservice.exception.JobException;
 import com.tarento.jobservice.elasticsearch.service.EsUtilService;
 import com.tarento.jobservice.entity.JobEntity;
-import com.tarento.jobservice.entity.UserJobSeekerIdsTransaction;
-import com.tarento.jobservice.entity.UserJobTransaction;
 import com.tarento.jobservice.repository.TargetJobRepository;
-import com.tarento.jobservice.repository.UserJobSeekerIdsTransactionRepository;
-import com.tarento.jobservice.repository.UserJobTransactionRepository;
 import com.tarento.jobservice.service.TargetJobService;
 import com.tarento.jobservice.util.service.UtilService;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.ValueOperations;
 import org.springframework.stereotype.Service;
 
-import javax.servlet.http.HttpServletRequest;
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.util.*;
@@ -47,9 +38,6 @@ public class TargetJobServiceImpl implements TargetJobService {
   @Autowired
   private UtilService utilService;
 
-  @Autowired
-  private UserJobTransactionRepository userJobTransactionRepository;
-
   @Value("${job.entity.redis.ttl}")
   private long jobEntityRedisTtl;
 
@@ -64,9 +52,6 @@ public class TargetJobServiceImpl implements TargetJobService {
 
   @Autowired
   private RedisTemplate<String, Long> jobCountRedisTemplate;
-
-  @Autowired
-  private UserJobSeekerIdsTransactionRepository userJobSeekerIdsTransactionRepository;
 
   @Override
   public void createOrUpdateJob(JsonNode jobJson) throws JsonProcessingException {
@@ -219,34 +204,6 @@ public class TargetJobServiceImpl implements TargetJobService {
       e.getStackTrace();
       throw new JobException("ERROR", "Error while loading ES from secondary source: "+e.getMessage());
     }
-  }
-
-  public void saveOrRemoveFavouriteJob(String candidateId, String jobTransientId, boolean isFavourite) {
-    UserJobTransaction userJobTransaction = userJobTransactionRepository.findByCandidateIdAndJobTransientId(candidateId, jobTransientId);
-
-    if (isFavourite && userJobTransaction == null) {
-      UserJobTransaction newUserJobTransaction = new UserJobTransaction();
-      newUserJobTransaction.setCandidateId(candidateId);
-      newUserJobTransaction.setJobTransientId(jobTransientId);
-      newUserJobTransaction.setCreatedDate(new Timestamp(System.currentTimeMillis()));
-      userJobTransactionRepository.save(newUserJobTransaction);
-    } else if (!isFavourite && userJobTransaction != null) {
-      userJobTransactionRepository.deleteById(userJobTransaction.getId());
-    }
-  }
-
-
-
-  private void mapExternalPortalJobSeekerIdOfSameUserWithSID(String candidateId, String jobxUserId) {
-    log.info("SidJobServiceImpl::mapExternalPortalJobSeekerIdOfSameUserWithSID");
-    UserJobSeekerIdsTransaction userJobSeekerIdsTransaction = new UserJobSeekerIdsTransaction();
-    userJobSeekerIdsTransaction.setUserCandidateId(candidateId);
-
-    ObjectNode jobSeekerIdsJson = JsonNodeFactory.instance.objectNode();
-    jobSeekerIdsJson.put("jobxUserId", Integer.parseInt(jobxUserId));
-
-    userJobSeekerIdsTransaction.setJobSeekerIds(jobSeekerIdsJson);
-    userJobSeekerIdsTransactionRepository.save(userJobSeekerIdsTransaction);
   }
 
   private ObjectNode setUserDetails(ObjectNode source) {

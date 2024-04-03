@@ -20,7 +20,7 @@ import org.hibernate.annotations.TypeDef;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "sid_jobs")
+@Table(name = "jobs")
 @TypeDef(name = "jsonb", typeClass = JsonBinaryType.class)
 public class JobEntity implements Serializable {
 
